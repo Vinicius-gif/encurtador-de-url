@@ -14,7 +14,7 @@ const HeaderContainer = styled.header`
 
 const LinkCabecalho = styled(Link)`
   text-decoration: none;
-  color: var(--gray);
+  color: var(--gray-violet);
   font-weight: bold;
   margin-left: 15px;
   margin-right: 15px;

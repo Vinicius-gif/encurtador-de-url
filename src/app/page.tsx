@@ -1,11 +1,15 @@
-import styles from './page.module.css'
+'use client'
+
+import Banner from '@/components/Banner'
 import Header from '@/components/Header'
+import Shorter from '@/components/Shorter'
 
 export default function Home() {
   return (
     <div>
       <Header/>
-      <h2>alallalal</h2>
+      <Banner/>
+      <Shorter/>
     </div>
   )
 }
