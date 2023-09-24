@@ -8,7 +8,8 @@
 
   --red: hsl(0, 87%, 67%);
   --gray: hsl(0, 0%, 75%);
-  --gray-violet: hsl(257, 7%, 63%);
+  --gray-violet: hsl(257, 11%, 62%);
+  --ligth-violet:rgb(228, 228, 240);
   --very-dark-blue: hsl(255, 11%, 22%);
 }
 

@@ -14,8 +14,18 @@ const Container = styled.div`
 const InputLink = styled.input`
   position: absolute;
   width: 40%;
-  height: 25%;
+  height: 30%;
   margin-right: 250px;
+  border: 2px var(--dark-violet) solid;
+  border-radius: 6px;
+
+  &:placeholder-shown{
+    color: var(--gray-violet);
+    font-weight: 500;
+    font-size: 18px;
+    padding-left: 20px;
+  }
+
 `
 
 const BotaoShorter = styled.button`
@@ -24,13 +34,14 @@ const BotaoShorter = styled.button`
   color: var(--white);
   background: var(--cyan);
   width: 160px;
-  border-radius: 26px;
+  height: 30%;
+  border-radius: 12px;
   padding: 14px;
   border: none;
   font-size: 18px;
   font-weight: bold;
   &:hover{
-    opacity: 0.5;
+    opacity: 0.7;
   }
 `
 
