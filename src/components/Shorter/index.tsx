@@ -5,10 +5,16 @@ import styled from 'styled-components'
 
 const Container = styled.div`
   position: relative;
-  margin-top: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
+`
+
+const BgImagem = styled.div`
+    position: relative;
+    width: 1100px;
+    height: 168px;
+    background-color: var(--dark-violet);
 `
 
 const InputLink = styled.input`
@@ -48,7 +54,9 @@ const BotaoShorter = styled.button`
 const Shorter = () => {
   return (
     <Container>
+      <BgImagem>
       <img src="/images/bg-shorten-desktop.svg" alt="Fundo" />
+      </BgImagem>
       <InputLink type="text" placeholder='Shorten a link here...'/>
       <BotaoShorter>Shorten It!</BotaoShorter>
     </Container>
