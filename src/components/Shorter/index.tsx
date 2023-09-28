@@ -34,6 +34,9 @@ const InputLink = styled.input`
 
 `
 
+const EncurtarUrl = () => {
+}
+
 const BotaoShorter = styled.button`
   position: absolute;
   margin-left: 750px;
@@ -47,7 +50,7 @@ const BotaoShorter = styled.button`
   font-size: 18px;
   font-weight: bold;
   &:hover{
-    opacity: 0.7;
+    filter: grayscale(50%) brightness(120%);
   }
 `
 

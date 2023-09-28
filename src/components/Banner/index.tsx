@@ -34,7 +34,7 @@ const BotaoBanner = styled.button`
   font-size: 18px;
   font-weight: bold;
   &:hover{
-    opacity: 0.5;
+    filter: grayscale(50%) brightness(120%);
   }
 `
 

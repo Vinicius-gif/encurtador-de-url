@@ -33,7 +33,7 @@ const Botao = styled.button`
   font-size: 16px;
   font-weight: bold;
   &:hover{
-    opacity: 0.5;
+    filter: grayscale(50%) brightness(120%);
   }
 `
 const LinksLogo = styled.div`
