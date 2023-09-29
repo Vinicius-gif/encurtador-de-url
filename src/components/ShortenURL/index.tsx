@@ -1,7 +1,6 @@
 'use client'
 
-import axios from 'axios'
-import React, { useState } from 'react'
+import { useEncurtarURL } from '@/app/Hooks/EncurtarURL/useEncurtarURL'
 import styled from 'styled-components'
 
 const Container = styled.div`
@@ -29,10 +28,6 @@ const InputLink = styled.input`
   top: 60px;
   left: 100px;
 
-  & label {
-    position: absolute;
-  }
-
   &:focus{
     border: 2px solid #e4085c;
     outline: 0;
@@ -48,6 +43,11 @@ const InputLink = styled.input`
     font-size: 18px;
     padding-left: 20px;
   }
+`
+
+const InputLink_Label = styled.label`
+  position: absolute;
+  color: red;
 `
 
 const BotaoShorter = styled.button`
@@ -66,58 +66,17 @@ const BotaoShorter = styled.button`
     filter: grayscale(50%) brightness(120%);
   }
 `
-const API_KEY = 'b2e173f7369d128004d88defe16314b123c62650'; // chave de API do Bitly
 
-const ShortenURL: React.FC = () => {
-  const [originalURL, setOriginalURL] = useState('');
-  const [shortenedURL, setShortenedURL] = useState('');
-  const [isValidURL, setIsValidURL] = useState(true);
-  const [isEmpty, setIsEmpty] = useState(false);
+const ShortenURL = () => {
 
-  const validateURL = (url: string) => {
-    try {
-      if (url === '') {
-        setIsValidURL(true);
-        setIsEmpty(true);
-        return;
-      }
-
-      new URL(url);
-      setIsValidURL(true);
-    } catch (error) {
-      setIsValidURL(false);
-      setIsEmpty(false);
-    }
-  };
-
-  const shortenURL = async () => {
-    validateURL(originalURL);
-
-    if (!isValidURL) {
-      return;
-    }
-
-    try {
-      const response = await axios.post(
-        'https://api-ssl.bitly.com/v4/shorten',
-        {
-          long_url: originalURL,
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${API_KEY}`,
-            'Content-Type': 'application/json',
-          },
-        }
-      );
-
-      const { link } = response.data;
-      setShortenedURL(link);
-    } catch (error) {
-      console.error('Erro ao encurtar a URL:', error);
-      alert('Ocorreu um erro ao encurtar a URL. Por favor, tente novamente mais tarde.');
-    }
-  };
+  const { 
+    originalURL, 
+    setOriginalURL, 
+    isValidURL,
+    isEmpty,
+    shortenURL,
+    shortenedURL  
+  } = useEncurtarURL();
 
   return (
     <Container>
@@ -129,13 +88,13 @@ const ShortenURL: React.FC = () => {
             value={originalURL}
             onChange={(e) => setOriginalURL(e.target.value)}
             style={{ borderColor: isValidURL ? 'initial' : 'red' }}
-          />
-          {isEmpty && <label style={{ color: 'red' }}>O campo não pode estar vazio.</label>}
+            />
+            {isEmpty && <InputLink_Label>O campo não pode estar vazio.</InputLink_Label>}
         </div>
       <BotaoShorter onClick={shortenURL}>Shorten It!</BotaoShorter>
       </Background>
       {!isValidURL && !isEmpty && (
-        <label style={{ color: 'red' }}>URL inválida. Por favor, insira uma URL válida.</label>
+        <InputLink_Label>URL inválida. Por favor, insira uma URL válida.</InputLink_Label>
       )}
       {shortenedURL && (
         <p>
