@@ -8,6 +8,7 @@ const CardContainer = styled.div`
   background-color: var(--white);
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   margin: 15px;
+  
 `
 const IconeCard = styled.div`
   background-color: var(--dark-violet);
@@ -28,13 +29,14 @@ const Titulo = styled.h2`
   color: var(--black);
   font-size: 22px;
   font-weight: bold;
-  margin-bottom: 15px;
+  margin-top: -20px;
 `
 
 const Descricao = styled.p`
   color: var(--gray-violet);
   font-size: 14px;
   word-break: break-all;
+  margin-top: -20px;
 `
 
 interface Props {

@@ -1,12 +1,13 @@
 import React from 'react'
 import styled from 'styled-components'
 import Card from './Card'
+import UrlShortener from '../UrlShortener'
+import { useShorterUrl } from '@/Hooks/useShorterUrl'
 
 const Container = styled.div`
   background-color: var(--ligth-violet);
   width: 100%;
   height: 700px;
-  margin-top: -80px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -30,9 +31,26 @@ const ContainerCards = styled.div`
   display: flex;
   margin-top: 50px;
 
+  & :nth-child(2) {
+    transform: translateY(2rem);
+  }
+
+  & :nth-child(3) {
+    transform: translateY(3rem);
+  }
+
+`
+
+const Linha = styled.div`
+  width: 80%;
+  height: 8px;
+  background-color: #1acbf7;
+  margin-top: -120px;
+  margin-left: 10px;
 `
 
 const Vantagens = () => {
+  
   return (
     <Container>
       <Div1>
@@ -58,6 +76,7 @@ const Vantagens = () => {
             descricao='Improve brand awareness and content discoverability trhough customizable links.'
           />
         </ContainerCards>
+        <Linha/>
       </Div1>
     </Container>
   )

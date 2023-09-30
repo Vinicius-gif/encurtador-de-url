@@ -1,7 +1,9 @@
 'use client'
 
-import { useEncurtarURL } from '@/app/Hooks/EncurtarURL/useEncurtarURL'
 import styled from 'styled-components'
+import React, { useState } from 'react';
+import axios from 'axios';
+import { useShorterUrl } from '@/Hooks/useShorterUrl';
 
 const Container = styled.div`
   display: flex;
@@ -67,45 +69,37 @@ const BotaoShorter = styled.button`
   }
 `
 
-const ShortenURL = () => {
+const UrlShortener = () => {
 
-  const { 
-    originalURL, 
-    setOriginalURL, 
-    isValidURL,
-    isEmpty,
-    shortenURL,
-    shortenedURL  
-  } = useEncurtarURL();
+  const { inputUrl, handleUrlInputChange, shortenUrl, shortenedUrls } = useShorterUrl();
 
   return (
-    <Container>
-      <Background>
-        <div>
-          <InputLink
-            type="text"
-            placeholder="Shorten a link here..."
-            value={originalURL}
-            onChange={(e) => setOriginalURL(e.target.value)}
-            style={{ borderColor: isValidURL ? 'initial' : 'red' }}
-            />
-            {isEmpty && <InputLink_Label>O campo não pode estar vazio.</InputLink_Label>}
-        </div>
-      <BotaoShorter onClick={shortenURL}>Shorten It!</BotaoShorter>
-      </Background>
-      {!isValidURL && !isEmpty && (
-        <InputLink_Label>URL inválida. Por favor, insira uma URL válida.</InputLink_Label>
-      )}
-      {shortenedURL && (
-        <p>
-          URL encurtada:{' '}
-          <a href={shortenedURL} target="_blank" rel="noopener noreferrer">
-            {shortenedURL}
-          </a>
-        </p>
-      )}
-    </Container>
+    <div>
+      <Container>
+        <Background>
+          <div>
+            <InputLink
+              type="text"
+              placeholder="Shorten a link here..."
+              value={inputUrl}
+              onChange={handleUrlInputChange}
+              />
+          </div>
+        <BotaoShorter onClick={shortenUrl}>Shorten It!</BotaoShorter>
+        </Background>
+      </Container>
+      <ul>
+          {shortenedUrls.map((url, index) => (
+            <li key={index}>
+              <a href={url.shortenedUrl} target="_blank" rel="noopener noreferrer">{url.shortenedUrl}</a>
+              <a href={url.fullUrl} target="_blank" rel="noopener noreferrer">{url.fullUrl}</a>
+            </li>
+          ))}
+        </ul>
+    </div>
   );
-};
+}
 
-export default ShortenURL;
+export default UrlShortener;
+
+
