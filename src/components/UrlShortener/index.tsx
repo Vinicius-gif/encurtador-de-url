@@ -1,8 +1,7 @@
 'use client'
 
 import styled from 'styled-components'
-import React, { useState } from 'react';
-import axios from 'axios';
+import React from 'react';
 import { useShorterUrl } from '@/Hooks/useShorterUrl';
 
 const Container = styled.div`
@@ -69,9 +68,63 @@ const BotaoShorter = styled.button`
   }
 `
 
+const ListaUrls = styled.ul`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`
+
+const ContainerUrl = styled.li`
+  width: 1100px;
+  height: 60px;
+  background-color: var(--white);
+  border-radius: 4px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  padding: 15px;
+  margin: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`
+
+const FullUrl = styled.a`
+  
+`
+
+const ShortUrl = styled.a`
+  color: var(--cyan);
+  margin-right: 20px;
+`
+
+const CopyButton = styled.button`
+  color: var(--white);
+  background: var(--cyan);
+  width: 90px;
+  height: 40px;
+  border-radius: 8px;
+  padding: 4px;
+  border: none;
+  font-size: 14px;
+  font-weight: bold;
+  &:hover{
+    filter: grayscale(50%) brightness(120%);
+  }
+`
+
 const UrlShortener = () => {
 
   const { inputUrl, handleUrlInputChange, shortenUrl, shortenedUrls } = useShorterUrl();
+
+  const copyToClipboard = (text: string) => {
+    const textArea = document.createElement('textarea');
+    textArea.value = text;
+    document.body.appendChild(textArea);
+    textArea.select();
+    document.execCommand('copy');
+    document.body.removeChild(textArea);
+    alert('Link copiado para a área de transferência.');
+  };
 
   return (
     <div>
@@ -88,14 +141,17 @@ const UrlShortener = () => {
         <BotaoShorter onClick={shortenUrl}>Shorten It!</BotaoShorter>
         </Background>
       </Container>
-      <ul>
+      <ListaUrls>
           {shortenedUrls.map((url, index) => (
-            <li key={index}>
-              <a href={url.shortenedUrl} target="_blank" rel="noopener noreferrer">{url.shortenedUrl}</a>
-              <a href={url.fullUrl} target="_blank" rel="noopener noreferrer">{url.fullUrl}</a>
-            </li>
+            <ContainerUrl key={index}>
+              <FullUrl href={url.fullUrl} target="_blank" rel="noopener noreferrer">{url.fullUrl}</FullUrl>
+              <div>
+                <ShortUrl href={url.shortenedUrl} target="_blank" rel="noopener noreferrer">{url.shortenedUrl}</ShortUrl>
+                <CopyButton onClick={() => copyToClipboard(url.shortenedUrl)}>Copy</CopyButton>
+              </div>
+            </ContainerUrl>
           ))}
-        </ul>
+      </ListaUrls>
     </div>
   );
 }
