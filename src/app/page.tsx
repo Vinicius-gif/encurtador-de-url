@@ -13,7 +13,7 @@ export default function Home() {
       <Header/>
       <main>
         <Banner/>
-        <UrlShortener/>
+        {/* <UrlShortener/> */}
         <Vantagens/>
         <Boost/>
       </main>

@@ -2,16 +2,14 @@ import React from 'react'
 import styled from 'styled-components'
 import Card from './Card'
 import UrlShortener from '../UrlShortener'
-import { useShorterUrl } from '@/Hooks/useShorterUrl'
 
 const Container = styled.div`
   background-color: var(--ligth-violet);
   width: 100%;
-  height: 700px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  height: 900px;
+  max-height: none;
   text-align: center;
+  overflow: auto;
 `
 const Div1 = styled.div`
   margin-top: 100px;
@@ -29,6 +27,8 @@ const Descricao = styled.p`
 `
 const ContainerCards = styled.div`
   display: flex;
+  justify-content: center;
+  align-items: center;
   margin-top: 50px;
 
   & :nth-child(2) {
@@ -42,43 +42,44 @@ const ContainerCards = styled.div`
 `
 
 const Linha = styled.div`
-  width: 80%;
+  width: 40%;
   height: 8px;
   background-color: #1acbf7;
   margin-top: -120px;
-  margin-left: 10px;
+  margin-left: 30%;
 `
 
 const Vantagens = () => {
   
   return (
     <Container>
-      <Div1>
-        <Titulo>Advanced Statistics</Titulo>
-        <Descricao>
-          Track how your links are performing across the web with <br />
-          our advanced statistics dashboard.
-        </Descricao>
-        <ContainerCards>
-          <Card
-            icone='/images/icon-brand-recognition.svg'
-            titulo='Brand Recognition'
-            descricao='Bosst your brandrecognition with each click.'
-          />
-          <Card
-            icone='/images/icon-detailed-records.svg'
-            titulo='Detailed Records'
-            descricao='Gain insigths into who is clicking your links.'
-          />
-          <Card
-            icone='/images/icon-fully-customizable.svg'
-            titulo='Fully Customizable'
-            descricao='Improve brand awareness and content discoverability trhough customizable links.'
-          />
-        </ContainerCards>
-        <Linha/>
-      </Div1>
-    </Container>
+        <UrlShortener/>
+        <Div1>
+          <Titulo>Advanced Statistics</Titulo>
+          <Descricao>
+            Track how your links are performing across the web with <br />
+            our advanced statistics dashboard.
+          </Descricao>
+          <ContainerCards>
+            <Card
+              icone='/images/icon-brand-recognition.svg'
+              titulo='Brand Recognition'
+              descricao='Bosst your brandrecognition with each click.'
+            />
+            <Card
+              icone='/images/icon-detailed-records.svg'
+              titulo='Detailed Records'
+              descricao='Gain insigths into who is clicking your links.'
+            />
+            <Card
+              icone='/images/icon-fully-customizable.svg'
+              titulo='Fully Customizable'
+              descricao='Improve brand awareness and content discoverability trhough customizable links.'
+            />
+          </ContainerCards>
+          <Linha/>
+        </Div1>
+      </Container>
   )
 }
 

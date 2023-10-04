@@ -30,7 +30,7 @@ export const useShorterUrl = () => {
       })
       .catch(error => {
         console.error('Erro ao encurtar a URL:', error);
-        alert('Algo inesperado aconteceu, tente novamente');
+        alert('Essa URL é inválida!');
       });
       
       setInputUrl('');
