@@ -1,15 +1,13 @@
 import React from 'react'
 import styled from 'styled-components'
 import Card from './Card'
-import UrlShortener from '../UrlShortener'
+import UrlShortener from './UrlShortener'
 
 const Container = styled.div`
   background-color: var(--ligth-violet);
   width: 100%;
-  height: 900px;
-  max-height: none;
+  height: auto;
   text-align: center;
-  overflow: auto;
 `
 const Div1 = styled.div`
   margin-top: 100px;
@@ -29,24 +27,7 @@ const ContainerCards = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 50px;
-
-  & :nth-child(2) {
-    transform: translateY(2rem);
-  }
-
-  & :nth-child(3) {
-    transform: translateY(3rem);
-  }
-
-`
-
-const Linha = styled.div`
-  width: 40%;
-  height: 8px;
-  background-color: #1acbf7;
-  margin-top: -120px;
-  margin-left: 30%;
+  margin-top: 60px;
 `
 
 const Vantagens = () => {
@@ -77,7 +58,6 @@ const Vantagens = () => {
               descricao='Improve brand awareness and content discoverability trhough customizable links.'
             />
           </ContainerCards>
-          <Linha/>
         </Div1>
       </Container>
   )
