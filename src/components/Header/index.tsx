@@ -1,7 +1,9 @@
 'use client'
 
+import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
+import { useMediaQuery } from 'react-responsive'
 import styled from 'styled-components'
 
 const HeaderContainer = styled.header`
@@ -10,6 +12,10 @@ const HeaderContainer = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  @media (max-width: 375px) {
+    padding: 10px 5%;
+}
 `
 
 const LinkCabecalho = styled(Link)`
@@ -40,25 +46,46 @@ const LinksLogo = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  @media (max-width: 375px) {
+    & div {
+      margin-left: 180px;
+    }
+  }
 `
 
 const LinksSing = styled.div`
-
+  @media (max-width: 375px) {
+    visibility: hidden;
+  }
 `
 
 const Header = () => {
+
+  const isMobile = useMediaQuery({ maxWidth: 375 });
+
   return (
     <HeaderContainer>
       <LinksLogo>
         <img src="/images/logo.svg" alt="logo" />
-        <LinkCabecalho href='/'>Features</LinkCabecalho>
-        <LinkCabecalho href='/'>Pricing</LinkCabecalho>
-        <LinkCabecalho href='/'>Resources</LinkCabecalho>
+        { isMobile ?
+            <div>
+              <Image width={20} height={20} src="/images/menu.png" alt="" />
+            </div>
+          :
+          <>
+            <LinkCabecalho href='/'>Features</LinkCabecalho>
+            <LinkCabecalho href='/'>Pricing</LinkCabecalho>
+            <LinkCabecalho href='/'>Resources</LinkCabecalho>
+          </>
+        }
       </LinksLogo>
-      <LinksSing>
-        <LinkCabecalho href='/'>Login</LinkCabecalho>
-        <Botao>Sign Up</Botao>
-      </LinksSing>
+      { !isMobile &&
+        <LinksSing>
+          <LinkCabecalho href='/'>Login</LinkCabecalho>
+          <Botao>Sign Up</Botao>
+        </LinksSing>
+      }
     </HeaderContainer>
   )
 }

@@ -8,25 +8,45 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 20px;
   margin-bottom: 70px;
 `
 
-const Background = styled.div`
+const Background = styled.article`
     position: relative;
     width: 1100px;
     height: 168px;
     background-color: var(--dark-violet);
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     border-radius: 12px;
+    margin-top: 30px;
+
+    @media (max-width: 375px) {
+      flex-direction: column;
+      width: 100%;
+      margin: 20px;
+
+      & input {
+        width: 85%;
+        top: 15px;
+        left: 8%;
+        border-radius: 8px;
+      }
+
+      & button {
+        bottom: 15px;
+        left: 8%;
+        width: 85%;
+        border-radius: 8px;
+      }
+    }
 `
 
 const InputLink = styled.input`
   position: absolute;
-  width: 60%;
-  height: 30%;
+  width: 700px;
+  height: 50px;
   border-radius: 6px;
   top: 60px;
   left: 100px;
@@ -48,18 +68,13 @@ const InputLink = styled.input`
   }
 `
 
-const InputLink_Label = styled.label`
-  position: absolute;
-  color: red;
-`
-
 const BotaoShorter = styled.button`
   position: absolute;
-  right: 70px;
+  right: 100px;
   color: var(--white);
   background: var(--cyan);
   width: 160px;
-  height: 30%;
+  height: 50px;
   border-radius: 12px;
   padding: 14px;
   border: none;
@@ -88,10 +103,27 @@ const ContainerUrl = styled.li`
   display: flex;
   align-items: center;
   justify-content: space-between;
-`
 
-const FullUrl = styled.a`
-  
+  @media (max-width: 375px) {
+    width: 90%;
+    height: 168px;
+    flex-direction: column;
+    text-align: start;
+
+    & a {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      width: 100%;
+      margin: 0;
+    }
+
+    & button {
+      width: 100%;
+      margin-top: 20px;
+    }
+  }
 `
 
 const ShortUrl = styled.a`
@@ -132,21 +164,19 @@ const UrlShortener = () => {
     <div>
       <Container>
         <Background>
-          <div>
             <InputLink
               type="text"
               placeholder="Shorten a link here..."
               value={inputUrl}
               onChange={handleUrlInputChange}
               />
-          </div>
-        <BotaoShorter onClick={shortenUrl}>Shorten It!</BotaoShorter>
+            <BotaoShorter onClick={shortenUrl}>Shorten It!</BotaoShorter>
         </Background>
       </Container>
       <ListaUrls>
           {shortenedUrls.map((url, index) => (
             <ContainerUrl key={index}>
-              <FullUrl href={url.fullUrl} target="_blank" rel="noopener noreferrer">{url.fullUrl}</FullUrl>
+                <a href={url.fullUrl} target="_blank" rel="noopener noreferrer">{url.fullUrl}</a>
               <div>
                 <ShortUrl href={url.shortenedUrl} target="_blank" rel="noopener noreferrer">{url.shortenedUrl}</ShortUrl>
                 <CopyButton onClick={() => copyToClipboard(url.shortenedUrl)}>Copy</CopyButton>

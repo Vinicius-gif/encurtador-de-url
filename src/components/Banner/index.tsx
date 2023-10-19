@@ -8,6 +8,17 @@ const Containner = styled.div`
   justify-content: space-around;
   align-items: center;
   margin-bottom: 60px;
+
+  @media (max-width: 375px) {
+
+    flex-direction: column-reverse;
+
+    & img {
+      width: 100%;
+      margin-bottom: 40px;
+      padding: 8px;
+    }
+  }
 `
 
 const TituloBanner = styled.h1`
@@ -16,6 +27,12 @@ const TituloBanner = styled.h1`
   font-weight: bold;
   line-height: 3.8rem;
   margin-bottom: 10px;
+  color: var(--dark-violet);
+
+  @media (max-width: 375px) {
+    text-align: center;
+    font-size: 42px;
+  }
 `
 
 const DescricaoTitulo = styled.h3`
@@ -23,6 +40,13 @@ const DescricaoTitulo = styled.h3`
   font-size: 18px;
   color: var(--gray-violet);
   margin-bottom: 20px;
+
+  @media (max-width: 375px) {
+    text-align: center;
+    font-size: 15px;
+    font-weight: 500;
+    margin: 20px 2px;
+  }
 `
 
 const BotaoBanner = styled.button`
@@ -37,6 +61,10 @@ const BotaoBanner = styled.button`
   &:hover{
     filter: grayscale(50%) brightness(120%);
   }
+
+  @media (max-width: 375px) {
+    margin: 0 25%;
+  }
 `
 
 const Banner = () => {
@@ -50,9 +78,7 @@ const Banner = () => {
         </DescricaoTitulo>
         <BotaoBanner>Get Started</BotaoBanner>
       </div>
-      <div>
-        <img src="/images/illustration-working.svg" alt="Imagem de uma pessoa em uma mesa no computador" />
-      </div>
+      <img src="/images/illustration-working.svg" alt="Imagem de uma pessoa em uma mesa no computador" />
     </Containner>
   )
 }
