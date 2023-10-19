@@ -19,17 +19,29 @@ const IconeCard = styled.div`
   margin-left: 20px;
   margin-top: -35px;
   padding-top: 10px;
+
+  @media (max-width: 375px) {
+    margin-left: 115px;
+  }
 `
 
 const ConteudoTexto = styled.div`
   text-align: start;
   padding: 15px;
+
+  @media (max-width: 375px) {
+    text-align: center;
+  }
 `
 
 const Titulo = styled.h2`
-  color: var(--black);
+  color: var(--dark-violet);
   font-size: 22px;
   font-weight: bold;
+
+  @media (max-width: 375px) {
+    margin-bottom: 10px;
+  }
 `
 
 const Descricao = styled.p`

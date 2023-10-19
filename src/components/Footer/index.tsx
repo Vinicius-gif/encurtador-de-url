@@ -10,11 +10,22 @@ const FooterContainer = styled.footer`
   align-items: center;
   justify-content: space-around;
   color: var(--white);
+
+  @media (max-width: 375px) {
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    height: 650px;
+  }
 `
 
 const Logo = styled.img`
   margin-bottom: 110px;
   filter: grayscale(100%) brightness(450%);
+
+  @media (max-width: 375px) {
+    margin: 15px;
+  }
 `
 
 const LinksFooter = styled.div`
@@ -29,6 +40,18 @@ const LinksFooter = styled.div`
   & h3 {
     font-weight: 600;
     font-size: 22px;
+  }
+
+  @media (max-width: 375px) {
+    flex-direction: column;
+
+    & ul{
+      margin: 15px;
+    }
+
+    & h3 {
+      margin-bottom: 10px;
+  }
   }
 `
 
@@ -52,6 +75,13 @@ const SocialMidias = styled.div`
       &:hover {
         filter: sepia(100%) brightness(80%);
     }
+  }
+
+  @media (max-width: 375px) {
+    margin: 40px 10px 10px 10px;
+    width: 100%;
+    justify-content: center;
+    gap: 15px;
   }
 `
 

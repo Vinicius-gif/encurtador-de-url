@@ -1,5 +1,7 @@
 'use client'
 
+import { useState } from 'react'
+
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
@@ -60,9 +62,43 @@ const LinksSing = styled.div`
   }
 `
 
+const MenuHamburguer = styled.div`
+  visibility: hidden;
+
+  @media (max-width: 375px) {
+    margin-bottom: -450px;
+    margin-left: -370px;
+    z-index: 1;
+    visibility: visible;
+    width: 320px;
+    height: 400px;
+    background-color: var(--dark-violet);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    border-radius: 8px;
+
+    & button {
+      width: 80%;
+    }
+
+    & a {
+      width: 80%;
+      text-align: center;
+    }
+  }
+`
+
 const Header = () => {
 
   const isMobile = useMediaQuery({ maxWidth: 375 });
+  const [menuAberto, setMenuAberto] = useState(false);
+
+  const toggleMenu = () => {
+    setMenuAberto(!menuAberto);
+  };
 
   return (
     <HeaderContainer>
@@ -70,7 +106,13 @@ const Header = () => {
         <img src="/images/logo.svg" alt="logo" />
         { isMobile ?
             <div>
-              <Image width={20} height={20} src="/images/menu.png" alt="" />
+              <Image 
+                width={20} 
+                height={20} 
+                src="/images/menu.png" 
+                alt="menu icon"
+                onClick={toggleMenu}
+              />
             </div>
           :
           <>
@@ -86,6 +128,24 @@ const Header = () => {
           <Botao>Sign Up</Botao>
         </LinksSing>
       }
+      {menuAberto && (
+        <MenuHamburguer>
+            <LinkCabecalho style={{color: 'white'}} href='/'>Features</LinkCabecalho>
+            <LinkCabecalho style={{color: 'white'}} href='/'>Pricing</LinkCabecalho>
+            <LinkCabecalho 
+              style={{
+                color: 'white',
+                borderBottom: '1px solid var(--gray-violet)',
+                paddingBottom: '20px'
+                }} 
+              href='/'
+              >
+                Resources
+              </LinkCabecalho>
+            <LinkCabecalho style={{color: 'white'}} href='/'>Login</LinkCabecalho>
+          <Botao>Sign Up</Botao>
+        </MenuHamburguer>
+      )}
     </HeaderContainer>
   )
 }

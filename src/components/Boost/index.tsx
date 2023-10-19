@@ -1,31 +1,30 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const Container = styled.figcaption`
+const Container = styled.div`
   background-color: var(--dark-violet);
   position: relative;
-  display: flexbox;
+  display: flex;
   align-items: center;
   justify-content: center;
+  width: 100%;
+  height: 210px;
 `
 
 const ImagemFundo = styled.img`
   position: relative;
   width: 100%;
+  height: 210px;
 `
 
 const Titulo = styled.h2`
-  font-size: 40px;
   font-weight: bold;
   color: var(--white);
   position: absolute;
-  top: 30%;
-  left: 40%;
+  margin-bottom: 70px;
 `
 const BotaoBoost = styled.button`
   position: absolute;
-  top: 60%;
-  left: 47%;
   color: var(--white);
   background: var(--cyan);
   width: 170px;
@@ -34,17 +33,30 @@ const BotaoBoost = styled.button`
   border: none;
   font-size: 18px;
   font-weight: bold;
+  margin-top: 80px;
   &:hover{
     filter: grayscale(50%) brightness(120%);
   }
+`
+
+const Container2 = styled.div`
+  width: 100%;
+  height: 210px;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
 `
 
 const Boost = () => {
   return (
     <Container>
       <ImagemFundo src="/images/bg-boost-desktop.svg" alt="" />
-      <Titulo>Boost your links today</Titulo>
-      <BotaoBoost>Get Started</BotaoBoost>
+      <Container2>
+        <Titulo>Boost your links today</Titulo>
+        <BotaoBoost>Get Started</BotaoBoost>
+      </Container2>
     </Container>
   )
 }

@@ -15,19 +15,32 @@ const Div1 = styled.div`
 
 const Titulo = styled.h2`
   font-size: 40px;
-  color: var(--black);
+  color: var(--dark-violet);
   font-weight: bold;
+
+  @media (max-width: 375px) {
+    font-size: 30px;
+  }
 `
 
 const Descricao = styled.p`
   font-size: 18px;
   color: var(--gray-violet);
+
+  @media (max-width: 375px) {
+    font-size: 16px;
+    text-align: center;
+  }
 `
 const ContainerCards = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   margin-top: 60px;
+
+  @media (max-width: 375px) {
+    flex-direction: column;
+  }
 `
 
 const Vantagens = () => {
