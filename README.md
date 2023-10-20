@@ -26,13 +26,13 @@ Os usuários devem ser capazes de:
 
 ### Screenshot Desktop
 
-![](public\design\layout-desktop.png)
+![Screenshot](public\design\layout-desktop.png)
 
 ### Screenshot Mobile
 
-![](public\design\layout-mobile.png) 
+![Screenshot](public\design\layout-mobile.png) 
 
-![](public\design\menu-mobile.png)
+![Screenshot](public\design\menu-mobile.png)
 
 
 ### Links
