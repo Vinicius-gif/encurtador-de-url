@@ -3,17 +3,13 @@
 Esta é uma solução para o desafio Shortly URL shortening API Challenge no Frontend Mentor. Os desafios do Frontend Mentor me ajudaram melhorar as minhas competências de programação através da criação de projetos reais.
 ## Índice
 
-- [Visão geral](#overview)
-  - [O Desafio](#the-challenge)
-  - [Screenshot](#screenshot)
+- [Visão geral](#visão-geral)
+  - [O Desafio](#o-desafio)
+  - [Screenshot Desktop](#screenshot-desktop)
+  - [Screenshot Mobile](#screenshot-mobile)
   - [Links](#links)
-- [My process](#my-process)
-  - [Built with](#built-with)
-  - [What I learned](#what-i-learned)
-  - [Continued development](#continued-development)
-  - [Useful resources](#useful-resources)
-- [Author](#author)
-- [Acknowledgments](#acknowledgments)
+- [Construído com](#construído-com)
+- [Autor](#autor)
 
 ## Visão geral
 
@@ -30,13 +26,13 @@ Os usuários devem ser capazes de:
 
 ### Screenshot Desktop
 
-![Screenshot Desktop](public\design\layout-desktop.png)
+![](public\design\layout-desktop.png)
 
 ### Screenshot Mobile
 
-![Screenshot Mobile](public\design\layout-mobile.png) 
+![](public\design\layout-mobile.png) 
 
-![Screenshot Mobile Menu](public\design\menu-mobile.png)
+![](public\design\menu-mobile.png)
 
 
 ### Links
